@@ -1,12 +1,7 @@
-/*
-	Name: Ian David Gregory
-	Class: CSC2110-002
-	Date: 06 October 2016
-*/
-
 #if !defined NULL
 #define NULL 0
 #endif
+
 
 #if !defined (STACKDEQUE_H)
 #define STACKDEQUE_H
@@ -29,28 +24,10 @@ class StackDeque
 		
 		bool isEmpty();
 		
-		/*
-			Pre:  None
-			post: Returns the item in the back of the queue
-		*/
 		T* peek();
-		
-		/*
-			Pre:  None
-			post: Deletes the items in the back of the queue
-		*/		
 		T* pop();
 		
-		/*
-			pre: none
-			post: Removes all items from the queue
-		*/
 		void popAll();
-		
-		/*
-			Pre: None
-			Post: The item is inserted into the back of the queue
-		*/
 		void push(T* item);
 };
 
@@ -63,7 +40,7 @@ StackDeque<T>::StackDeque()
 template < class T >
 StackDeque<T>::~StackDeque()
 {
-	popAll();
+	delete dqA;
 }
 
 template < class T >
@@ -75,7 +52,7 @@ int StackDeque<T>::size()
 template < class T >
 bool StackDeque<T>::isEmpty()
 {
-	return dqA->isEmpty();  
+	return size() == 0;  
 }
 
 template < class T >
@@ -93,7 +70,7 @@ T* StackDeque<T>::pop()
 template < class T >
 void StackDeque<T>::popAll()
 {
-	dqA->dequeueAll(); 
+	 
 }
 
 template < class T >

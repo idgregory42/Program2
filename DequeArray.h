@@ -1,10 +1,3 @@
-/*
-	Name: Ian David Gregory
-	Class: CSC2110-002
-	Date: 06 October 2016
-*/
-
-
 #if !defined NULL
 #define NULL 0
 #endif
@@ -29,52 +22,25 @@ class DequeArray
 		
 	public:
 	
+		DequeArray();//
+		~DequeArray();//
 		
-		DequeArray();
-		~DequeArray();
+		bool isEmpty();//
 		
-		bool isEmpty();
+		int size();//
 		
-		int size();
+		void dequeueAll();//
 		
-		/*
-			Pre: None
-			Post: removes all items from the array
-		*/
-		void dequeueAll();
+		T* peek();//
 		
-		/*
-			Pre: None
-			Post: Returns the item at the front of the queue.
-				  If the queue is empty it returns NULL.
-		*/		
-		T* peek();
+		void enqueue(T* item);//
 		
-		/*
-			Pre: None
-			Post: The items is inserted into the back of the queue
-		*/		
-		void enqueue(T* item);
+		T* dequeue();//
 		
-		/*
-			Pre: None
-			Post:  Deletes the item in the front of the queue
-		*/		
-		T* dequeue();
-		/*
-			Pre:none 
-			Post: returns item at the back of the queue
-		*/		
-		T* peekDeque();
-		/*
-			Pre:None 
-			Post: Deletes the items in the back of the queue
-		*/		
-		void enqueueDeque(T* item);
-		/*
-			Pre:None
-			Post: Deletes the items in the back of the queue
-		*/		
+		T* peekDeque();//
+		
+		void enqueueDeque(T* item);//
+		
 		T* dequeueDeque();
 	
 };
@@ -94,6 +60,7 @@ template < class T >
 DequeArray<T>::~DequeArray()
 {
 	delete[] items;
+	
 }
 
 template < class T >
@@ -115,13 +82,19 @@ T* DequeArray<T>::dequeueDeque()
 	
 	if(!isEmpty())
 	{
+		
 		item = items[back];
 		items[back] = NULL;
+		
 		back -= 1;
-		if(back < 0 ) back = (max_queue - 1);
+	
+		if(back < 0 )
+		{
+			back = (max_queue - 1);
+		}
+	
 		sz--;
 	}
-	
 	return item;
 }
 
@@ -129,18 +102,32 @@ template < class T >
 T* DequeArray<T>::peekDeque()
 {
 	T* item = NULL;
-	if(!isEmpty()) item = items[back];
-	
+	if(!isEmpty())
+	{
+		item = items[back];
+	}
 	return item;
 }
 
 template < class T >
 void DequeArray<T>::enqueueDeque(T* item)
 {
-	if(sz == max_queue) arrayResize(2*max_queue);
-	front -= 1;
-	if(front < 0) front = (max_queue - 1);
+	if(sz == max_queue)
+	{
+		arrayResize(2*max_queue);
+	}
+	
+	
+	front =- 1;
+	if(front < 0)
+	{
+		front = (max_queue - 1);
+	}
+	
+	
+	
 	items[front] = item;
+	
 	sz++;
 }
 
@@ -148,11 +135,6 @@ template < class T >
 void DequeArray<T>::dequeueAll()
 {
 	delete[] items;
-	max_queue = 2;
-	items = new T*[max_queue];
-	front = 0;
-	back = max_queue - 1;
-	sz = 0;
 	
 }
 
@@ -160,18 +142,26 @@ template < class T >
 T* DequeArray<T>::peek()
 {
 	T* item = NULL;
-	if(!isEmpty()) item = items[front];
+	
+	if(!isEmpty())
+	{
+		item = items[front];
+	}
 	return item;
 }
 
 template < class T >
 void DequeArray<T>::enqueue(T* item)
 {
-	if(sz == max_queue) arrayResize(2*max_queue);
-	back += 1;
-	//back = ((back + 1) % max_queue);
-	if(back == max_queue) back = 0;
+	if(sz == max_queue)
+	{
+		arrayResize(2*max_queue);
+	}
+	
+	back = ((back + 1) % max_queue);
+	
 	items[back] = item;
+	
 	sz++;
 }
 
@@ -184,9 +174,7 @@ T* DequeArray<T>::dequeue()
 	{
 		item = items[front];
 		items[front] = NULL;
-		front += 1;
-		//front = ((front + 1) % max_queue);
-		if(front == max_queue) front = 0;
+		front = ((front + 1) % max_queue);
 		sz--;
 	}
 	return item;
@@ -197,14 +185,14 @@ void DequeArray<T>::arrayResize(int new_size)
 {
    T** temp = new T*[new_size];
    int j = front;
-   
+
    for (int i = 0; i < sz; i++)
    {
       temp[i] = items[j];
       j++;
       if (j == max_queue) j = 0;
    }
-   
+
    front = 0;
    back = sz - 1;
    max_queue = new_size;

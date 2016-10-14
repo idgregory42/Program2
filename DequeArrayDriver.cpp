@@ -1,19 +1,15 @@
 #include "DequeArray.h"
+#include "QueueDeque.h"
+#include "StackDeque.h"
+#include <iostream>
 
-
-#include "CSC2110/Text.h"
-using CSC2110::String;
-#include "CSC2110/Valtostr.h"
-using CSC2110::Valtostr;
-#include "CSC2110/Integer.h"
-using CSC2110::Integer;
+using namespace std;
 
 int main()
 {
 	
 	
 	int size;
-/*	
 	int t1 = 1;
 	int t2 = 2;
 	int t3 = 3;
@@ -64,68 +60,30 @@ int main()
 	int* b;
 	int* n;
 	int* m;
-*/	
+	
 	
 
 	
 	
-	DequeArray<Integer>* de = new DequeArray<Integer>;
-	Valtostr* intVal = new Valtostr();
-
-	String* _sz;
-	String* sz;
-	String* val;
-	String* _val;
-	String* end_line = new String("\n");
-	Integer* in_it;
-	int* v_al;
+	DequeArray<int>* de = new DequeArray<int>;
 	
-
-	for(int i = 1; i <= 20; i++)
-	{
-		size = de->size();
-		if(i == 1)
-		{
-			end_line->displayString();			
-			_sz = new String(" **Start Size: ");
-			_sz->displayString();
-			sz = new String(intVal->i_to_c(size));
-			sz->displayString();
-			end_line->displayString();
-			end_line->displayString();			
-			in_it = new Integer(i);
-			de->enqueue(in_it);					
-		}
-		else
-		{
-			
-			_sz = new String("* Size3: ");
-			_sz->displayString();
-			sz = new String(intVal->i_to_c(size));
-			sz->displayString();
-			end_line->displayString();
-			
-			in_it = new Integer(i);
-			de->enqueue(in_it);			
-		}
-	}
-		size = de->size();
+	
 		
-		_sz = new String("* Size1: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();
 		
-		end_line->displayString();
-		end_line->displayString();
-		end_line->displayString();
-/*		
+		
+		
+		
+		cout << endl;
+		
+		cout << endl;
+		
+		
+	
+	
+	cout << endl;
+	
 		size = de->size();
-		_sz = new String("Size2: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();
-		
+		cout << size << endl;
 		de->enqueue(&t1);
 		de->enqueue(&t2);
 		de->enqueue(&t3);
@@ -136,13 +94,8 @@ int main()
 		de->enqueue(&t8);
 		de->enqueue(&t9);
 		de->enqueue(&t10);
-		
 		size = de->size();
-		_sz = new String("Size: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();
-		
+		cout << size << endl;
 		de->enqueue(&t11);
 		de->enqueue(&t12);
 		de->enqueue(&t13);
@@ -153,113 +106,13 @@ int main()
 		de->enqueue(&t18);
 		de->enqueue(&t19);
 		de->enqueue(&t20);
-*/		
 		
 		
 		
-	for(int i = 0; i < 10; i++)
-	{
-		size = de->size();
-		_sz = new String("* Size2: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();	
 		
-		end_line->displayString();
-		end_line->displayString();		
-		in_it = de->dequeueDeque();
-		_val = new String("** deqDeq: ");
-		_val->displayString();
-		val = new String(intVal->i_to_c(in_it->getValue()));
-		val->displayString();
 		
-		end_line->displayString();
-		end_line->displayString();		
-	}
 		
 	size = de->size();
-
-	
-	end_line->displayString();
-	end_line->displayString();		
-	_sz = new String(" **End Size: ");	
-	_sz->displayString();
-	
-	sz = new String(intVal->i_to_c(size));
-	sz->displayString();
-	end_line->displayString();
-	in_it = de->peek();
-	_val = new String("** Front: ");
-	_val->displayString();
-	val = new String(intVal->i_to_c(in_it->getValue()));
-    val->displayString();
-	end_line->displayString();
-	end_line->displayString();
-
-	for(int i = 20; i > 15; i--)
-	{
-		size = de->size();
-		_sz = new String("* Size3: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();
-		end_line->displayString();
-			
-		in_it = new Integer(i);
-		de->enqueueDeque(in_it);					
-	}
-	size = de->size();
-	_sz = new String(" **End Size: ");	
-	_sz->displayString();
-	
-	sz = new String(intVal->i_to_c(size));
-	sz->displayString();
-	end_line->displayString();	
-	for(int i = 2; i > 0; i--)
-	{
-		size = de->size();
-		_sz = new String("* Size2: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();	
-		
-		end_line->displayString();
-		end_line->displayString();		
-		in_it = de->dequeue();
-		_val = new String("** deqDeq: ");
-		_val->displayString();
-		val = new String(intVal->i_to_c(in_it->getValue()));
-		val->displayString();
-		
-		end_line->displayString();
-		end_line->displayString();				
-	}
-		end_line->displayString();
-		end_line->displayString();	
-		end_line->displayString();
-		end_line->displayString();				
-	size = de->size();
-	for(int i = 0; i < 13; i++)
-	{
-		
-		_sz = new String("* Size2: ");
-		_sz->displayString();
-		sz = new String(intVal->i_to_c(size));
-		sz->displayString();	
-		
-		end_line->displayString();
-		end_line->displayString();		
-		in_it = de->dequeueDeque();
-		_val = new String("** deqDeq: ");
-		_val->displayString();
-		val = new String(intVal->i_to_c(in_it->getValue()));
-		val->displayString();
-		
-		end_line->displayString();
-		end_line->displayString();
-       	size = de->size();	
-	}
-/*	
 	cout << size << endl;
 		q = de->dequeueDeque();
 		cout << "deqDeq: " << *q << endl;
@@ -306,16 +159,9 @@ int main()
 		
 		size = de->size();
 	cout << size << endl;
-*/		
-	delete _sz;
-	delete end_line;
-	delete sz;
-	delete val;
-	delete _val;
-delete in_it;
-
-	delete intVal;
-	delete de;
+		
+	
+	
 
  
  return 0;	
